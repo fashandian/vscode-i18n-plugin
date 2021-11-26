@@ -9,7 +9,7 @@ const decoration = vscode.window.createTextEditorDecorationType({
 
 async function setTextDecorations(editor: vscode.TextEditor) {
 	const text = editor.document.getText();
-	const regEx = /(formatMessage.*id:\s*['"])(.*)['"].*/g;
+	const regEx = /(formatMessage.*\s*id:\s*['"])(.*)['"].*/g;
 	const smallNumbers: vscode.DecorationOptions[] = [];
 	let match;
   let file, contentText = '';
@@ -20,7 +20,7 @@ async function setTextDecorations(editor: vscode.TextEditor) {
 		const startPos = editor.document.positionAt(match.index + match[1].length);
 		const endPos = editor.document.positionAt(match.index + match[1].length + match[2].length);
     if (file) {
-      const reg = new RegExp(`${match[2]}['"].*:\s*['"](.*)['"],`);
+      const reg = new RegExp(`${match[2]}['"].*:\\s*['"](.*)['"]`);
       const result = file.match(reg);
       contentText = result ? result[1] : '';
     }
