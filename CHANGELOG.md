@@ -50,5 +50,5 @@
 
 
 [Unreleased]: https://github.com/fashandian/vscode-i18n-plugin
-[0.0.2]: https://github.com/fashandian/vscode-i18n-plugin
+[0.0.2]: https://github.com/fashandian/vscode-i18n-plugin/tree/0.0.2
 [0.0.1]: https://github.com/fashandian/vscode-i18n-plugin
