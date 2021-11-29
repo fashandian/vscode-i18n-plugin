@@ -12,4 +12,4 @@
 - [ ] ...
 
 ## 变更记录
-- [历史版本记录](http://gitlab.pinming.org/common-front/gddn/vscode-i18n-plugin/blob/master/CHANGELOG.md)
+- [历史版本记录](https://github.com/fashandian/vscode-i18n-plugin/blob/master/CHANGELOG.md)
