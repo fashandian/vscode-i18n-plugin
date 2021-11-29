@@ -1,6 +1,6 @@
 {
-  "name": "i18n-plugin",
-	"displayName": "i18n-plugin",
+  "name": "vscode-i18n-plugin",
+	"displayName": "vscode-i18n-plugin",
 	"description": "用来显示翻译的中文",
 	"version": "0.0.2",
 	"publisher": "fashandian",
@@ -11,7 +11,7 @@
 		"Other"
 	],
 	"activationEvents": [
-    "onCommand:i18n-plugin.helloWorld",
+    "onCommand:vscode-i18n-plugin.helloWorld",
 		"onLanguage:react"
 	],
 	"icon": "static/logo.jpg",
@@ -19,7 +19,7 @@
 	"contributes": {
 		"commands": [
 			{
-				"command": "i18n-plugin.helloWorld",
+				"command": "vscode-i18n-plugin.helloWorld",
 				"title": "Hello World"
 			}
 		],
@@ -28,7 +28,7 @@
 				{
 					"when": "resourceLangId === typescript",
 					"title": "tsHello",
-					"command": "i18n-plugin.helloWorld",
+					"command": "vscode-i18n-plugin.helloWorld",
 					"group": "navigation"
 				}
 			]
