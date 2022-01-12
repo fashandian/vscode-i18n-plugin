@@ -40,6 +40,14 @@
 - [ ] 支持搜索查找
 - [ ] ...
 
+## [0.0.2-beta] - 2022-01-12
+
+### Added
+- 增加自动识别文件后缀的功能
+
+### Fixed
+- 修复当安装该插件后，导致打开文件被强制使用 `React` 语言识别的问题
+
 ## [0.0.2] - 2021-11-29
 ### Fixed
 - 修复存在空格时，无法匹配成功的问题
@@ -49,6 +57,7 @@
 - 自动匹配显示中文
 
 
-[Unreleased]: https://github.com/fashandian/vscode-i18n-plugin
-[0.0.2]: https://github.com/fashandian/vscode-i18n-plugin/tree/0.0.2
-[0.0.1]: https://github.com/fashandian/vscode-i18n-plugin
+[Unreleased]: http://gitlab.pinming.org/common-front/gddn/vscode-i18n-plugin/blob/0.0.2-beta
+[0.0.2-beta]: http://gitlab.pinming.org/common-front/gddn/vscode-i18n-plugin/blob/0.0.2-beta
+[0.0.2]: http://gitlab.pinming.org/common-front/gddn/vscode-i18n-plugin/blob/0.0.2
+[0.0.1]: http://gitlab.pinming.org/common-front/gddn/vscode-i18n-plugin/tree/master

@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
-import { readFileContent } from './utils';
+import { findFileByRootLocales, readFileContent } from './utils';
 
+// TODO: 开放语言版本切换显示
+// 入口文件
 const locales = 'zh-CN';
 
 const decoration = vscode.window.createTextEditorDecorationType({
@@ -9,13 +11,23 @@ const decoration = vscode.window.createTextEditorDecorationType({
 
 async function setTextDecorations(editor: vscode.TextEditor) {
 	const text = editor.document.getText();
-	const regEx = /(formatMessage.*\s*id:\s*['"])(.*)['"].*/g;
+	const regEx = /(formatMessage[^'"]*\s*id:\s*['"])([^'"]*)['"]/g;
 	const smallNumbers: vscode.DecorationOptions[] = [];
 	let match;
   let file, contentText = '';
-  if (vscode.workspace.workspaceFolders?.[0].uri) {
-    file = await readFileContent(vscode.Uri.joinPath(vscode.workspace.workspaceFolders?.[0].uri, `src/locales`), [`${locales}`]);
-  }
+	const workspaceUri = vscode.workspace.workspaceFolders?.[0]?.uri;
+  if (workspaceUri) {
+		const files = await findFileByRootLocales(vscode.Uri.joinPath(workspaceUri, i18nPaths[0]));
+		const rootFile = files.find(item => item.includes(locales));
+		if (rootFile) {
+			file = await readFileContent(vscode.Uri.joinPath(workspaceUri, i18nPaths[0]), [`${rootFile}`], files);
+		} else {
+			vscode.window.showErrorMessage('i18n-plugin 无法获取到语言入口文件!');
+		}
+  } else {
+		vscode.window.showErrorMessage('i18n-plugin 无法获取工作空间!');
+	}
+
 	while ((match = regEx.exec(text))) {
 		const startPos = editor.document.positionAt(match.index + match[1].length);
 		const endPos = editor.document.positionAt(match.index + match[1].length + match[2].length);
