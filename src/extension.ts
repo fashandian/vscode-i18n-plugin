@@ -21,6 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
 	});
 
 	const marker = new Marker();
+	console.log(vscode.workspace.getConfiguration('vsI18n').get('locales'));
+	console.log(vscode.workspace.getConfiguration('matchRegex').get('matchRegex'));
 
 	context.subscriptions.push(disposable);
 	marker.disposables.forEach(item => {
