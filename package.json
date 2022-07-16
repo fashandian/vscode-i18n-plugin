@@ -2,7 +2,7 @@
 	"name": "i18n-plugin",
 	"displayName": "i18n-plugin",
 	"description": "用来显示翻译的中文",
-	"version": "0.0.2-beta.1",
+	"version": "0.0.2-beta.2",
 	"publisher": "fashandian",
 	"engines": {
 		"vscode": "^1.62.0"
@@ -26,7 +26,7 @@
 		"menus": {
 			"editor/title": [
 				{
-					"when": "resourceLangId === typescript",
+					"when": "resourceLangId == typescriptreact",
 					"title": "tsHello",
 					"command": "i18n-plugin.helloWorld",
 					"group": "navigation"
@@ -54,16 +54,17 @@
 			{
 				"title": "vscode-i18n-plugin",
 				"properties": {
-					"vsI18n.locales": {
+					"vscI18n.matchRegexp": {
 						"type": "string",
-						"default": "/src/locales",
-						"markdownDescription": "vscode-i18n-plugin locales file url"
+						"default": "\/(formatMessage[^'\"`]*['\"`])([^'\"`]*)['\"`]/g",
+						"markdownDescription": "Regular expression matching Locales ID, default ```\/(formatMessage[^'\"`]*['\"`])([^'\"`]*)['\"`]/g```, \n\n`notes:` the regular expression matching should have two group. \n\n - first group: part before locales id. \n\n - second group: locales id. \n\n `example:` the regular expression matching `formatMessage({ id: 'locales-id' })` should capture group `formatMessage({ id: '` and `locales-id`"
 					},
-					"matchRegex": {
+					"vscI18n.locales": {
 						"type": "string",
-						"default": "",
-						"markdownDescription": "Regex match locales id"
+						"default": "/src/locales/zh-CN.js",
+						"markdownDescription": "Locales entry file url"
 					}
+					
 				}
 			}
 		]
@@ -77,7 +78,8 @@
 		"watch": "tsc -watch -p ./",
 		"pretest": "yarn run compile && yarn run lint",
 		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
+		"test": "node ./out/test/runTest.js",
+		"package": "vsce package"
 	},
 	"devDependencies": {
 		"@types/vscode": "^1.62.0",

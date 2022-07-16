@@ -51,3 +51,15 @@ export async function findFileByRootLocales(rootPath: vscode.Uri, result: string
 
   return result;
 }
+
+export function getLocalesConfiguration() {
+  const localesEntryFile: string = vscode.workspace.getConfiguration('vscI18n').get('locales') || `src/locales/zh-CN.js`;
+  return localesEntryFile.match(/(.+)\/([^\/]*)$/);
+}
+
+export function getRegexpConfiguration() {
+  // /(formatMessage[^'"`]*\s*id:\s*['"`])([^'"`]*)['"`]/g
+	const matchRegex: string = vscode.workspace.getConfiguration('vscI18n').get('matchRegexp') || '/(formatMessage[^\'"`]*[\'"`])([^\'"`]*)[\'"`]/g';
+  const result = matchRegex.match(/^\/([^\/]+)\/([^\/]*)$/);
+  return result;
+}
